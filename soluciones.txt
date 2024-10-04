@@ -1,0 +1,68 @@
+#######################################################################################################################################
+# Teoría
+
+1.b) 
+#--------------------------------------------------------------------------------------------------------------------------------------
+
+2.b) 
+#b)--------------------------------------------------------------------------------------------------------------------------------------
+
+3.En el 1NF (Primera Forma Normal). 
+#--------------------------------------------------------------------------------------------------------------------------------------
+
+4. WHERE se ejecuta antes del GROUP BY y el HAVING se ejecuta despues de ese comando.  
+#--------------------------------------------------------------------------------------------------------------------------------------
+
+5.c)
+#######################################################################################################################################
+# Práctica
+
+1.
+
+```SQL
+-- poner solución debajo de este mensaje
+
+SELECT nombre_materia as Materia,
+	AVG(calificacion) as Promedio
+FROM calificaciones
+GROUP BY Materia
+HAVING Promedio NOT NULL
+ORDER BY Promedio DESC;
+
+```
+
+2.
+
+```SQL
+-- poner solución debajo de este mensaje
+
+SELECT alumnos.apellido as Apellido, 
+		alumnos.nombre as Nombre,
+		calificaciones.nombre_materia as Materia,
+		calificaciones.calificacion as Calificacion
+FROM alumnos 
+JOIN calificaciones 
+ON alumnos.expediente = calificaciones.expediente
+WHERE calificacion NOT NULL
+ORDER BY Apellido ASC;
+
+
+```
+
+3.
+
+```SQL
+-- poner solución debajo de este mensaje
+
+SELECT alumnos.apellido as Apellido, 
+		alumnos.nombre as Nombre,
+		calificaciones.nombre_materia as Materia,
+		MAX(calificaciones.calificacion) as Calificacion_maxima
+FROM alumnos
+JOIN calificaciones
+ON alumnos.expediente = calificaciones.expediente
+GROUP BY nombre
+HAVING calificacion_maxima NOT NULL
+ORDER BY Apellido ASC;
+
+```
